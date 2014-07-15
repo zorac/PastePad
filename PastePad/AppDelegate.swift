@@ -9,18 +9,54 @@
 import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-                            
-    @IBOutlet var window: NSWindow
+    var windows = NSMutableSet()
+    var preferences: PreferencesController?
 
-
-    func applicationDidFinishLaunching(aNotification: NSNotification?) {
-        // Insert code here to initialize your application
+    func applicationDidFinishLaunching(aNotification:NSNotification?) {
+        NSUserDefaults.standardUserDefaults().registerDefaults([
+            TextModeKey: TextModeDefault.toRaw(),
+            InspectorKey: InspectorDefault,
+            RulerKey: RulerDefault,
+            TextMode.Rich.fontKey: fontToName(NSFont.userFontOfSize(0.0)),
+            TextMode.Plain.fontKey: fontToName(NSFont.userFixedPitchFontOfSize(0.0))
+        ])
+        
+        self.newWindow(self)
     }
 
-    func applicationWillTerminate(aNotification: NSNotification?) {
-        // Insert code here to tear down your application
+    @IBAction func newWindow(AnyObject) {
+        let controller = PadController(windowNibName:"Pad")
+        
+        controller.showWindow(self)
+        controller.window.makeKeyAndOrderFront(self)
+
+        windows.addObject(controller)
+    }
+    
+    func windowWillClose(controller:PadController) {
+        windows.removeObject(controller)
+        
+        if (windows.count == 0) {
+            preferences?.close()
+        }
     }
 
-
+    @IBAction func showPreferences(AnyObject) {
+        if (preferences == nil) {
+            preferences = PreferencesController(windowNibName:"Preferences")
+            preferences!.showWindow(self)
+        }
+        
+        preferences!.window.makeKeyAndOrderFront(self)
+    }
+    
+    func preferencesWillClose() {
+        NSUserDefaults.standardUserDefaults().synchronize()
+        preferences = nil
+    }
+    
+    func applicationShouldTerminateAfterLastWindowClosed(sender:NSApplication!) -> Bool {
+        return true
+    }
 }
 

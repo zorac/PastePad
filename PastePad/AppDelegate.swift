@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func newWindow(AnyObject) {
-        let controller = PadController(windowNibName:"Pad")
+        let controller = PadController(window:nil)
         
         controller.showWindow(self)
         controller.window.makeKeyAndOrderFront(self)
@@ -43,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBAction func showPreferences(AnyObject) {
         if (preferences == nil) {
-            preferences = PreferencesController(windowNibName:"Preferences")
+            preferences = PreferencesController(window:nil)
             preferences!.showWindow(self)
         }
         

@@ -58,11 +58,11 @@ func nameToFont(name:String, textMode:TextMode) -> NSFont {
         points = MaxPoints
     }
     
-    let font:NSFont? = NSFont(name:face, size:points) // not declared as optional but can still return nil
+    let font:NSFont? = NSFont(name:face, size:CGFloat(points)) // not declared as optional but can still return nil
         
-    if font {
+    if font != nil {
         return font!
     } else {
-        return textMode.userFontOfSize(points)
+        return textMode.userFontOfSize(CGFloat(points))
     }
 }

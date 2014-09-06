@@ -28,6 +28,20 @@
 			remoteGlobalIDString = 0AA89E3519727236004B0AA5;
 			remoteInfo = PastePad;
 		};
+		0AB5E0051975A9990050BE01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AA89E2E19727236004B0AA5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0AA89E3519727236004B0AA5;
+			remoteInfo = PastePad;
+		};
+		0AB5E0071975A9990050BE01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AA89E2E19727236004B0AA5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0AA89E3519727236004B0AA5;
+			remoteInfo = PastePad;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -161,6 +175,8 @@
 			);
 			dependencies = (
 				0AA89E4A19727236004B0AA5 /* PBXTargetDependency */,
+				0AB5E0061975A9990050BE01 /* PBXTargetDependency */,
+				0AB5E0081975A9990050BE01 /* PBXTargetDependency */,
 			);
 			name = PastePadTests;
 			productName = PastePadTests;
@@ -260,6 +276,16 @@
 			isa = PBXTargetDependency;
 			target = 0AA89E3519727236004B0AA5 /* PastePad */;
 			targetProxy = 0AA89E4919727236004B0AA5 /* PBXContainerItemProxy */;
+		};
+		0AB5E0061975A9990050BE01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0AA89E3519727236004B0AA5 /* PastePad */;
+			targetProxy = 0AB5E0051975A9990050BE01 /* PBXContainerItemProxy */;
+		};
+		0AB5E0081975A9990050BE01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0AA89E3519727236004B0AA5 /* PastePad */;
+			targetProxy = 0AB5E0071975A9990050BE01 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

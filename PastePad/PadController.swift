@@ -17,15 +17,16 @@ class PadController: NSWindowController, NSWindowDelegate {
     var inspector = InspectorDefault
     var ruler = RulerDefault
     
-    @IBOutlet var scrollView : NSScrollView
+    @IBOutlet var textView:NSTextView!
     
-    var textView:NSTextView {
-        return scrollView.contentView.documentView as NSTextView
+    override var windowNibName:String! {
+        return "Pad"
     }
     
     override func windowDidLoad() {
         super.windowDidLoad()
         
+        textView.enabledTextCheckingTypes = 0
         inspector = defaults.boolForKey(InspectorKey)
         ruler = defaults.boolForKey(RulerKey)
         
@@ -62,7 +63,7 @@ class PadController: NSWindowController, NSWindowDelegate {
         let text = textView.textStorage.string
         let rich = textMode.isRich
         let fontKey = textMode.fontKey
-        let font = nameToFont(defaults.stringForKey(fontKey), rich ? .Rich : .Plain)
+        let font = nameToFont(defaults.stringForKey(fontKey)!, rich ? .Rich : .Plain)
         let attributes = [NSFontAttributeName:font]
         let attributed = NSAttributedString(string:text, attributes:attributes)
         
@@ -74,7 +75,7 @@ class PadController: NSWindowController, NSWindowDelegate {
         textView.rulerVisible = rich ? ruler : false
     }
     
-    override func observeValueForKeyPath(keyPath:String!, ofObject object:AnyObject!, change:[NSObject:AnyObject]!, context:UnsafePointer<()>) {
+    override func observeValueForKeyPath(keyPath:String!, ofObject object:AnyObject!, change:[NSObject:AnyObject]!, context:UnsafeMutablePointer<Void>) {
         if (!textMode.isRich) {
             setTextMode(.Plain)
         }
@@ -85,7 +86,7 @@ class PadController: NSWindowController, NSWindowDelegate {
     }
     
     func windowWillClose(notification:NSNotification!) {
-        let appDelegate = NSApp.delegate as AppDelegate;
+        let appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
         
         appDelegate.windowWillClose(self)
     }

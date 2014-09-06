@@ -1,13 +1,15 @@
 {
   "images" : [
     {
-      "idiom" : "mac",
       "size" : "16x16",
+      "idiom" : "mac",
+      "filename" : "PastePad16.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
       "size" : "16x16",
+      "idiom" : "mac",
+      "filename" : "PastePad16@2x.png",
       "scale" : "2x"
     },
     {
@@ -43,7 +45,7 @@
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "Icon512.png",
+      "filename" : "PastePad512.png",
       "scale" : "1x"
     },
     {

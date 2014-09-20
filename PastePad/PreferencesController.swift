@@ -12,28 +12,28 @@ class PreferencesController: NSWindowController, NSWindowDelegate {
     let defaults = NSUserDefaults.standardUserDefaults()
     let fontManager = NSFontManager.sharedFontManager()
 
-    var textMode:TextMode?;
+    var textMode: TextMode?;
     
-    override var windowNibName:String! {
+    override var windowNibName: String! {
         return "Preferences"
     }
 
-    @IBAction func displayFontPanel(sender:NSView) {
-        textMode = TextMode.fromRaw(sender.tag)
+    @IBAction func displayFontPanel(sender: NSView) {
+        textMode = TextMode(rawValue: sender.tag)
         
         if textMode != nil {
             let font = nameToFont(defaults.stringForKey(textMode!.fontKey)!, textMode!)
     
-            fontManager.setSelectedFont(font, isMultiple:false)
+            fontManager.setSelectedFont(font, isMultiple: false)
             fontManager.orderFrontFontPanel(self)
         }
     }
     
-    override func validModesForFontPanel(fontPanel:NSFontPanel!) -> Int {
+    override func validModesForFontPanel(fontPanel: NSFontPanel!) -> Int {
         return Int(NSFontPanelFaceModeMask | NSFontPanelSizeModeMask | NSFontPanelCollectionModeMask)
     }
     
-    override func changeFont(sender:AnyObject!) {
+    override func changeFont(sender: AnyObject!) {
         if textMode != nil {
             let oldFont = nameToFont(defaults.stringForKey(textMode!.fontKey)!, textMode!)
             let newFont = fontManager.convertFont(oldFont)
@@ -46,7 +46,7 @@ class PreferencesController: NSWindowController, NSWindowDelegate {
         }
     }
 
-    func windowWillClose(notification:NSNotification!) {
+    func windowWillClose(notification: NSNotification!) {
         let appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
         
         appDelegate.preferencesWillClose()

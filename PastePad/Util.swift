@@ -41,24 +41,24 @@ let RulerKey = "PPRuler"
 let RulerDefault = false
 let MaxPoints = 288.0
 
-func fontToName(font:NSFont) -> String {
+func fontToName(font: NSFont) -> String {
     return "\(font.pointSize)pt \(font.displayName)"
 }
 
-func nameToFont(name:String, textMode:TextMode) -> NSFont {
+func nameToFont(name: String, textMode: TextMode) -> NSFont {
     let scanner = NSScanner(string:name)
     var points:Double = 0.0
     var face:NSString?
 
     scanner.scanDouble(&points)
-    scanner.scanString("pt", intoString:nil);
-    scanner.scanUpToCharactersFromSet(NSCharacterSet.newlineCharacterSet(), intoString:&face)
+    scanner.scanString("pt", intoString: nil);
+    scanner.scanUpToCharactersFromSet(NSCharacterSet.newlineCharacterSet(), intoString: &face)
     
     if points > MaxPoints {
         points = MaxPoints
     }
     
-    let font:NSFont? = NSFont(name:face, size:CGFloat(points)) // not declared as optional but can still return nil
+    let font: NSFont? = NSFont(name: face, size: CGFloat(points)) // not declared as optional but can still return nil
         
     if font != nil {
         return font!

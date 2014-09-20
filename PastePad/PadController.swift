@@ -17,9 +17,9 @@ class PadController: NSWindowController, NSWindowDelegate {
     var inspector = InspectorDefault
     var ruler = RulerDefault
     
-    @IBOutlet var textView:NSTextView!
+    @IBOutlet var textView: NSTextView!
     
-    override var windowNibName:String! {
+    override var windowNibName: String! {
         return "Pad"
     }
     
@@ -30,13 +30,13 @@ class PadController: NSWindowController, NSWindowDelegate {
         inspector = defaults.boolForKey(InspectorKey)
         ruler = defaults.boolForKey(RulerKey)
         
-        if let mode = TextMode.fromRaw(defaults.integerForKey(TextModeKey)) {
+        if let mode = TextMode(rawValue:defaults.integerForKey(TextModeKey)) {
             setTextMode(mode);
         } else {
             setTextMode(TextModeDefault)
         }
 
-        defaults.addObserver(self, forKeyPath:TextMode.Plain.fontKey, options:.New, context:nil)
+        defaults.addObserver(self, forKeyPath: TextMode.Plain.fontKey, options: .New, context: nil)
         self.window.title = String(format:"PastePad %ld", ++counter)
     }
     
@@ -57,7 +57,7 @@ class PadController: NSWindowController, NSWindowDelegate {
         }
     }
 
-    func setTextMode(newTextMode:TextMode) {
+    func setTextMode(newTextMode: TextMode) {
         textMode = newTextMode
 
         let text = textView.textStorage.string
@@ -65,7 +65,7 @@ class PadController: NSWindowController, NSWindowDelegate {
         let fontKey = textMode.fontKey
         let font = nameToFont(defaults.stringForKey(fontKey)!, rich ? .Rich : .Plain)
         let attributes = [NSFontAttributeName:font]
-        let attributed = NSAttributedString(string:text, attributes:attributes)
+        let attributed = NSAttributedString(string: text, attributes: attributes)
         
         textView.richText = rich
         textView.textStorage.setAttributedString(attributed)
@@ -75,17 +75,17 @@ class PadController: NSWindowController, NSWindowDelegate {
         textView.rulerVisible = rich ? ruler : false
     }
     
-    override func observeValueForKeyPath(keyPath:String!, ofObject object:AnyObject!, change:[NSObject:AnyObject]!, context:UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
         if (!textMode.isRich) {
             setTextMode(.Plain)
         }
     }
     
-    override func validModesForFontPanel(fontPanel:NSFontPanel!) -> Int {
+    override func validModesForFontPanel(fontPanel: NSFontPanel!) -> Int {
         return Int(NSFontPanelAllModesMask)
     }
     
-    func windowWillClose(notification:NSNotification!) {
+    func windowWillClose(notification: NSNotification!) {
         let appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
         
         appDelegate.windowWillClose(self)

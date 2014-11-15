@@ -21,28 +21,25 @@ class PreferencesController: NSWindowController, NSWindowDelegate {
     @IBAction func displayFontPanel(sender: NSView) {
         textMode = TextMode(rawValue: sender.tag)
         
-        if textMode != nil {
-            let font = nameToFont(defaults.stringForKey(textMode!.fontKey)!, textMode!)
+        if let mode = textMode {
+            let font = nameToFont(defaults.stringForKey(mode.fontKey)!, mode)
     
             fontManager.setSelectedFont(font, isMultiple: false)
             fontManager.orderFrontFontPanel(self)
         }
     }
     
-    override func validModesForFontPanel(fontPanel: NSFontPanel!) -> Int {
+    override func validModesForFontPanel(fontPanel: NSFontPanel) -> Int {
         return Int(NSFontPanelFaceModeMask | NSFontPanelSizeModeMask | NSFontPanelCollectionModeMask)
     }
     
     override func changeFont(sender: AnyObject!) {
-        if textMode != nil {
-            let oldFont = nameToFont(defaults.stringForKey(textMode!.fontKey)!, textMode!)
+        if let mode = textMode {
+            let oldFont = nameToFont(defaults.stringForKey(mode.fontKey)!, mode)
             let newFont = fontManager.convertFont(oldFont)
-            
-            if newFont != nil {
-                let name = fontToName(newFont)
+            let name = fontToName(newFont)
                 
-                defaults.setObject(name, forKey:textMode!.fontKey)
-            }
+            defaults.setObject(name, forKey:mode.fontKey)
         }
     }
 

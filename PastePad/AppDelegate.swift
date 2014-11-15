@@ -17,8 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             TextModeKey: TextModeDefault.rawValue,
             InspectorKey: InspectorDefault,
             RulerKey: RulerDefault,
-            TextMode.Rich.fontKey: fontToName(NSFont.userFontOfSize(0.0)),
-            TextMode.Plain.fontKey: fontToName(NSFont.userFixedPitchFontOfSize(0.0))
+            TextMode.Rich.fontKey: fontToName(TextMode.Rich.userFontOfSize(0.0)),
+            TextMode.Plain.fontKey: fontToName(TextMode.Plain.userFontOfSize(0.0))
         ])
         
         self.newWindow(self)
@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let controller = PadController(window: nil)
         
         controller.showWindow(self)
-        controller.window.makeKeyAndOrderFront(self)
+        controller.window!.makeKeyAndOrderFront(self)
 
         windows.addObject(controller)
     }
@@ -47,7 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             preferences!.showWindow(self)
         }
         
-        preferences!.window.makeKeyAndOrderFront(self)
+        preferences!.window!.makeKeyAndOrderFront(self)
     }
     
     func preferencesWillClose() {

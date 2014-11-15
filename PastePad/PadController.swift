@@ -37,7 +37,7 @@ class PadController: NSWindowController, NSWindowDelegate {
         }
 
         defaults.addObserver(self, forKeyPath: TextMode.Plain.fontKey, options: .New, context: nil)
-        self.window.title = String(format:"PastePad %ld", ++counter)
+        self.window!.title = String(format:"PastePad %ld", ++counter)
     }
     
     @IBAction func togglePlainText(AnyObject) {
@@ -60,28 +60,28 @@ class PadController: NSWindowController, NSWindowDelegate {
     func setTextMode(newTextMode: TextMode) {
         textMode = newTextMode
 
-        let text = textView.textStorage.string
+        let text = textView.textStorage!.string
         let rich = textMode.isRich
         let fontKey = textMode.fontKey
         let font = nameToFont(defaults.stringForKey(fontKey)!, rich ? .Rich : .Plain)
-        let attributes = [NSFontAttributeName:font]
+        let attributes = [ NSFontAttributeName: font ]
         let attributed = NSAttributedString(string: text, attributes: attributes)
         
         textView.richText = rich
-        textView.textStorage.setAttributedString(attributed)
+        textView.textStorage!.setAttributedString(attributed)
         textView.typingAttributes = attributes
         textView.usesFontPanel = rich
         textView.usesInspectorBar = rich ? inspector : false
         textView.rulerVisible = rich ? ruler : false
     }
     
-    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (!textMode.isRich) {
             setTextMode(.Plain)
         }
     }
     
-    override func validModesForFontPanel(fontPanel: NSFontPanel!) -> Int {
+    override func validModesForFontPanel(fontPanel: NSFontPanel) -> Int {
         return Int(NSFontPanelAllModesMask)
     }
     

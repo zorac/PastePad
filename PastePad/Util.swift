@@ -28,7 +28,7 @@ enum TextMode:Int {
         return isRich ? .Plain : .Rich
     }
     
-    func userFontOfSize(points:CGFloat) -> NSFont {
+    func userFontOfSize(points:CGFloat) -> NSFont! {
         return isPlain ? NSFont.userFixedPitchFontOfSize(points) : NSFont.userFontOfSize(points)
     }
 }
@@ -42,7 +42,7 @@ let RulerDefault = false
 let MaxPoints = 288.0
 
 func fontToName(font: NSFont) -> String {
-    return "\(font.pointSize)pt \(font.displayName)"
+    return "\(font.pointSize)pt \(font.displayName!)"
 }
 
 func nameToFont(name: String, textMode: TextMode) -> NSFont {
@@ -57,11 +57,9 @@ func nameToFont(name: String, textMode: TextMode) -> NSFont {
     if points > MaxPoints {
         points = MaxPoints
     }
-    
-    let font: NSFont? = NSFont(name: face, size: CGFloat(points)) // not declared as optional but can still return nil
         
-    if font != nil {
-        return font!
+    if let font = NSFont(name: face!, size: CGFloat(points)) {
+        return font
     } else {
         return textMode.userFontOfSize(CGFloat(points))
     }

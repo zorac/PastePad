@@ -22,7 +22,7 @@ class PreferencesController: NSWindowController, NSWindowDelegate {
         textMode = TextMode(rawValue: sender.tag)
         
         if let mode = textMode {
-            let font = nameToFont(defaults.stringForKey(mode.fontKey)!, mode)
+            let font = nameToFont(defaults.stringForKey(mode.fontKey)!, textMode: mode)
     
             fontManager.setSelectedFont(font, isMultiple: false)
             fontManager.orderFrontFontPanel(self)
@@ -35,7 +35,7 @@ class PreferencesController: NSWindowController, NSWindowDelegate {
     
     override func changeFont(sender: AnyObject!) {
         if let mode = textMode {
-            let oldFont = nameToFont(defaults.stringForKey(mode.fontKey)!, mode)
+            let oldFont = nameToFont(defaults.stringForKey(mode.fontKey)!, textMode: mode)
             let newFont = fontManager.convertFont(oldFont)
             let name = fontToName(newFont)
                 
@@ -43,8 +43,8 @@ class PreferencesController: NSWindowController, NSWindowDelegate {
         }
     }
 
-    func windowWillClose(notification: NSNotification!) {
-        let appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
+    func windowWillClose(notification: NSNotification) {
+        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         
         appDelegate.preferencesWillClose()
     }

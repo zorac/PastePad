@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8173.3"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PadController" customModule="PastePad">
@@ -26,11 +25,11 @@
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyX-OH-ivP">
                         <rect key="frame" x="-1" y="-1" width="552" height="362"/>
                         <clipView key="contentView" id="5q1-9W-bux">
-                            <rect key="frame" x="1" y="1" width="223" height="133"/>
+                            <rect key="frame" x="1" y="1" width="550" height="360"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" findStyle="bar" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsDocumentBackgroundColorChange="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" grammarChecking="YES" id="qMC-wJ-iMt">
-                                    <rect key="frame" x="0.0" y="0.0" width="223" height="360"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="550" height="360"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="550" height="360"/>
@@ -47,7 +46,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="C6I-td-gh9">
-                            <rect key="frame" x="224" y="1" width="15" height="133"/>
+                            <rect key="frame" x="535" y="1" width="16" height="360"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -62,6 +61,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="hcr-zS-r5o"/>
             </connections>
+            <point key="canvasLocation" x="132" y="-216"/>
         </window>
     </objects>
 </document>

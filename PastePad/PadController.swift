@@ -40,7 +40,7 @@ class PadController: NSWindowController, NSWindowDelegate {
         self.window!.title = String(format:"PastePad %ld", ++counter)
     }
     
-    @IBAction func togglePlainText(AnyObject) {
+    @IBAction func togglePlainText(_: AnyObject) {
         if (textMode.isRich) {
             inspector = textView.usesInspectorBar
             ruler = textView.rulerVisible
@@ -49,7 +49,7 @@ class PadController: NSWindowController, NSWindowDelegate {
         setTextMode(textMode.other)
     }
     
-    @IBAction func toggleInspector(AnyObject) {
+    @IBAction func toggleInspector(_: AnyObject) {
         inspector = !inspector
 
         if (textMode.isRich) {
@@ -63,7 +63,7 @@ class PadController: NSWindowController, NSWindowDelegate {
         let text = textView.textStorage!.string
         let rich = textMode.isRich
         let fontKey = textMode.fontKey
-        let font = nameToFont(defaults.stringForKey(fontKey)!, rich ? .Rich : .Plain)
+        let font = nameToFont(defaults.stringForKey(fontKey)!, textMode: rich ? .Rich : .Plain)
         let attributes = [ NSFontAttributeName: font ]
         let attributed = NSAttributedString(string: text, attributes: attributes)
         
@@ -75,7 +75,7 @@ class PadController: NSWindowController, NSWindowDelegate {
         textView.rulerVisible = rich ? ruler : false
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if (!textMode.isRich) {
             setTextMode(.Plain)
         }
@@ -85,8 +85,8 @@ class PadController: NSWindowController, NSWindowDelegate {
         return Int(NSFontPanelAllModesMask)
     }
     
-    func windowWillClose(notification: NSNotification!) {
-        let appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
+    func windowWillClose(notification: NSNotification) {
+        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         
         appDelegate.windowWillClose(self)
     }

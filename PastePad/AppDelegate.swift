@@ -12,7 +12,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var windows = NSMutableSet()
     var preferences: PreferencesController?
 
-    func applicationDidFinishLaunching(notification: NSNotification!) {
+    func applicationDidFinishLaunching(notification: NSNotification) {
         NSUserDefaults.standardUserDefaults().registerDefaults([
             TextModeKey: TextModeDefault.rawValue,
             InspectorKey: InspectorDefault,
@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.newWindow(self)
     }
     
-    @IBAction func newWindow(AnyObject) {
+    @IBAction func newWindow(_: AnyObject) {
         let controller = PadController(window: nil)
         
         controller.showWindow(self)
@@ -41,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    @IBAction func showPreferences(AnyObject) {
+    @IBAction func showPreferences(_: AnyObject) {
         if (preferences == nil) {
             preferences = PreferencesController(window: nil)
             preferences!.showWindow(self)
@@ -55,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         preferences = nil
     }
     
-    func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication!) -> Bool {
+    func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
         return true
     }
 }

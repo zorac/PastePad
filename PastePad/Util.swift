@@ -58,7 +58,7 @@ func nameToFont(name: String, textMode: TextMode) -> NSFont {
         points = MaxPoints
     }
         
-    if let font = NSFont(name: face!, size: CGFloat(points)) {
+    if let font = NSFont(name: face! as String, size: CGFloat(points)) {
         return font
     } else {
         return textMode.userFontOfSize(CGFloat(points))

@@ -35,8 +35,16 @@ class PadController: NSDocument {
         ruler = defaults.bool(forKey: RulerKey)
         
         if let attributed = loading {
-            setTextMode(textMode)
+            if textMode == .rich {
+                setTextMode(.rich)
+            }
+            
             textView.textStorage!.setAttributedString(attributed)
+            
+            if textMode == .plain {
+                setTextMode(.plain)
+            }
+            
             loading = nil
         } else if let mode = TextMode(rawValue:defaults.integer(forKey: TextModeKey)) {
             setTextMode(mode);
@@ -50,6 +58,15 @@ class PadController: NSDocument {
     override class func autosavesInPlace() -> Bool {
         return true
     }
+    
+    override func canClose(withDelegate delegate: Any, shouldClose shouldCloseSelector: Selector?, contextInfo: UnsafeMutableRawPointer?) {
+        if fileURL == nil {
+            updateChangeCount(NSDocumentChangeType.changeCleared)
+        }
+        
+        super.canClose(withDelegate: delegate, shouldClose: shouldCloseSelector, contextInfo: contextInfo)
+    }
+
     
     override func writableTypes(for saveOperation: NSSaveOperationType) -> [String] {
         return [ textMode.fileType ]

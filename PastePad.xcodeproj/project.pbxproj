@@ -11,7 +11,6 @@
 		0AA89E3E19727236004B0AA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E3D19727236004B0AA5 /* AppDelegate.swift */; };
 		0AA89E4019727236004B0AA5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AA89E3F19727236004B0AA5 /* Images.xcassets */; };
 		0AA89E4F19727236004B0AA5 /* PastePadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E4E19727236004B0AA5 /* PastePadTests.swift */; };
-		0AA89E67197274A9004B0AA5 /* DockMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA89E5F197274A9004B0AA5 /* DockMenu.xib */; };
 		0AA89E69197274A9004B0AA5 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA89E63197274A9004B0AA5 /* Preferences.xib */; };
 		0AA89E6A197274A9004B0AA5 /* Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA89E65197274A9004B0AA5 /* Pad.xib */; };
 		0AA89E6C1972769A004B0AA5 /* PadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E6B1972769A004B0AA5 /* PadController.swift */; };
@@ -53,7 +52,6 @@
 		0AA89E4D19727236004B0AA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AA89E4E19727236004B0AA5 /* PastePadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastePadTests.swift; sourceTree = "<group>"; };
 		0AA89E5E19727392004B0AA5 /* PastePad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PastePad.entitlements; sourceTree = "<group>"; };
-		0AA89E60197274A9004B0AA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DockMenu.xib; sourceTree = "<group>"; };
 		0AA89E64197274A9004B0AA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Preferences.xib; sourceTree = "<group>"; };
 		0AA89E66197274A9004B0AA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Pad.xib; sourceTree = "<group>"; };
 		0AA89E6B1972769A004B0AA5 /* PadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadController.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				0AA89E6B1972769A004B0AA5 /* PadController.swift */,
 				0AA89E6D197276B4004B0AA5 /* PreferencesController.swift */,
 				0AA89E71197278BB004B0AA5 /* Util.swift */,
-				0AA89E5F197274A9004B0AA5 /* DockMenu.xib */,
 				0A2982F019729DEB00A1EFFC /* MainMenu.xib */,
 				0AA89E65197274A9004B0AA5 /* Pad.xib */,
 				0AA89E63197274A9004B0AA5 /* Preferences.xib */,
@@ -230,7 +227,6 @@
 				0AA89E4019727236004B0AA5 /* Images.xcassets in Resources */,
 				0A2982F119729DEB00A1EFFC /* MainMenu.xib in Resources */,
 				0AA89E6A197274A9004B0AA5 /* Pad.xib in Resources */,
-				0AA89E67197274A9004B0AA5 /* DockMenu.xib in Resources */,
 				0AA89E69197274A9004B0AA5 /* Preferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,14 +281,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0AA89E5F197274A9004B0AA5 /* DockMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0AA89E60197274A9004B0AA5 /* Base */,
-			);
-			name = DockMenu.xib;
-			sourceTree = "<group>";
-		};
 		0AA89E63197274A9004B0AA5 /* Preferences.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

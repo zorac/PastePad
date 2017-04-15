@@ -9,7 +9,7 @@
 import Cocoa
 
 class PadController: NSDocument {
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
     
     var loading: NSAttributedString?
     var textMode = TextModeDefault
@@ -27,38 +27,38 @@ class PadController: NSDocument {
         // Add your subclass-specific initialization here.
     }
     
-    override func windowControllerDidLoadNib(aController: NSWindowController) {
+    override func windowControllerDidLoadNib(_ aController: NSWindowController) {
         super.windowControllerDidLoadNib(aController)
         
         textView.enabledTextCheckingTypes = 0
-        inspector = defaults.boolForKey(InspectorKey)
-        ruler = defaults.boolForKey(RulerKey)
+        inspector = defaults.bool(forKey: InspectorKey)
+        ruler = defaults.bool(forKey: RulerKey)
         
         if let attributed = loading {
             setTextMode(textMode)
             textView.textStorage!.setAttributedString(attributed)
             loading = nil
-        } else if let mode = TextMode(rawValue:defaults.integerForKey(TextModeKey)) {
+        } else if let mode = TextMode(rawValue:defaults.integer(forKey: TextModeKey)) {
             setTextMode(mode);
         } else {
             setTextMode(TextModeDefault)
         }
 
-        defaults.addObserver(self, forKeyPath: TextMode.Plain.fontKey, options: .New, context: nil)
+        defaults.addObserver(self, forKeyPath: TextMode.plain.fontKey, options: .new, context: nil)
     }
     
     override class func autosavesInPlace() -> Bool {
         return true
     }
     
-    override func writableTypesForSaveOperation(saveOperation: NSSaveOperationType) -> [String] {
+    override func writableTypes(for saveOperation: NSSaveOperationType) -> [String] {
         return [ textMode.fileType ]
     }
     
     @IBAction func togglePlainText(_: AnyObject) {
         if (textMode.isRich) {
             inspector = textView.usesInspectorBar
-            ruler = textView.rulerVisible
+            ruler = textView.isRulerVisible
         }
         
         setTextMode(textMode.other)
@@ -72,25 +72,25 @@ class PadController: NSDocument {
         }
     }
 
-    func setTextMode(newTextMode: TextMode) {
+    func setTextMode(_ newTextMode: TextMode) {
         textMode = newTextMode
 
         let text = textView.textStorage!.string
         let rich = textMode.isRich
         let fontKey = textMode.fontKey
-        let font = nameToFont(defaults.stringForKey(fontKey)!, textMode: rich ? .Rich : .Plain)
+        let font = nameToFont(defaults.string(forKey: fontKey)!, textMode: rich ? .rich : .plain)
         let attributes = [ NSFontAttributeName: font ]
         let attributed = NSAttributedString(string: text, attributes: attributes)
         
-        textView.richText = rich
+        textView.isRichText = rich
         textView.textStorage!.setAttributedString(attributed)
         textView.typingAttributes = attributes
         textView.usesFontPanel = rich
         textView.usesInspectorBar = rich ? inspector : false
-        textView.rulerVisible = rich ? ruler : false
+        textView.isRulerVisible = rich ? ruler : false
         
         if let url = fileURL {
-            saveToURL(url, ofType: textMode.fileType, forSaveOperation: NSSaveOperationType.AutosaveInPlaceOperation, completionHandler: { error in
+            save(to: url, ofType: textMode.fileType, for: NSSaveOperationType.autosaveInPlaceOperation, completionHandler: { error in
                 if (error != nil) {
                     self.fileURL = nil
                 }
@@ -100,40 +100,40 @@ class PadController: NSDocument {
         fileType = textMode.fileType
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if (!textMode.isRich) {
-            setTextMode(.Plain)
+            setTextMode(.plain)
         }
     }
     
     // TODO is this correct now?
-    override func validModesForFontPanel(fontPanel: NSFontPanel) -> Int {
+    override func validModesForFontPanel(_ fontPanel: NSFontPanel) -> Int {
         return Int(NSFontPanelAllModesMask)
     }
     
     // TODO is this correct now?
-    func windowWillClose(notification: NSNotification) {
-        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+    func windowWillClose(_ notification: Notification) {
+        let appDelegate = NSApplication.shared().delegate as! AppDelegate
         
         appDelegate.windowWillClose(self)
     }
     
-    override func dataOfType(typeName: String) throws -> NSData {
+    override func data(ofType typeName: String) throws -> Data {
         if typeName == textMode.fileType {
             if let storage = textView.textStorage {
-                return try storage.dataFromRange(NSMakeRange(0, storage.length), documentAttributes: [NSDocumentTypeDocumentAttribute: textMode.documentType])
+                return try storage.data(from: NSMakeRange(0, storage.length), documentAttributes: [NSDocumentTypeDocumentAttribute: textMode.documentType])
             }
         }
 
         throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
     }
     
-    override func readFromData(data: NSData, ofType typeName: String) throws {
+    override func read(from data: Data, ofType typeName: String) throws {
         switch typeName {
         case PlainType:
-            textMode = .Plain
+            textMode = .plain
         case RichType:
-            textMode = .Rich
+            textMode = .rich
         default:
             throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
         }

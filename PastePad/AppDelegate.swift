@@ -13,19 +13,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var windows = NSMutableSet()
     var preferences: PreferencesController?
 
-    func applicationDidFinishLaunching(notification: NSNotification) {
-        NSUserDefaults.standardUserDefaults().registerDefaults([
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        UserDefaults.standard.register(defaults: [
             TextModeKey: TextModeDefault.rawValue,
             InspectorKey: InspectorDefault,
             RulerKey: RulerDefault,
-            TextMode.Rich.fontKey: fontToName(TextMode.Rich.userFontOfSize(0.0)),
-            TextMode.Plain.fontKey: fontToName(TextMode.Plain.userFontOfSize(0.0))
+            TextMode.rich.fontKey: fontToName(TextMode.rich.userFontOfSize(0.0)),
+            TextMode.plain.fontKey: fontToName(TextMode.plain.userFontOfSize(0.0))
         ])
     }
     
     // TODO is this needed?
-    func windowWillClose(controller: PadController) {
-        windows.removeObject(controller)
+    func windowWillClose(_ controller: PadController) {
+        windows.remove(controller)
         
         if (windows.count == 0) {
             preferences?.close()
@@ -42,11 +42,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func preferencesWillClose() {
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.synchronize()
         preferences = nil
     }
     
-    func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
 }

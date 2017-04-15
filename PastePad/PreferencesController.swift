@@ -9,8 +9,8 @@
 import Cocoa
 
 class PreferencesController: NSWindowController, NSWindowDelegate {
-    let defaults = NSUserDefaults.standardUserDefaults()
-    let fontManager = NSFontManager.sharedFontManager()
+    let defaults = UserDefaults.standard
+    let fontManager = NSFontManager.shared()
 
     var textMode: TextMode?;
     
@@ -18,33 +18,33 @@ class PreferencesController: NSWindowController, NSWindowDelegate {
         return "Preferences"
     }
 
-    @IBAction func displayFontPanel(sender: NSView) {
+    @IBAction func displayFontPanel(_ sender: NSView) {
         textMode = TextMode(rawValue: sender.tag)
         
         if let mode = textMode {
-            let font = nameToFont(defaults.stringForKey(mode.fontKey)!, textMode: mode)
+            let font = nameToFont(defaults.string(forKey: mode.fontKey)!, textMode: mode)
     
             fontManager.setSelectedFont(font, isMultiple: false)
             fontManager.orderFrontFontPanel(self)
         }
     }
     
-    override func validModesForFontPanel(fontPanel: NSFontPanel) -> Int {
+    override func validModesForFontPanel(_ fontPanel: NSFontPanel) -> Int {
         return Int(NSFontPanelFaceModeMask | NSFontPanelSizeModeMask | NSFontPanelCollectionModeMask)
     }
     
-    override func changeFont(sender: AnyObject!) {
+    override func changeFont(_ sender: Any!) {
         if let mode = textMode {
-            let oldFont = nameToFont(defaults.stringForKey(mode.fontKey)!, textMode: mode)
-            let newFont = fontManager.convertFont(oldFont)
+            let oldFont = nameToFont(defaults.string(forKey: mode.fontKey)!, textMode: mode)
+            let newFont = fontManager.convert(oldFont)
             let name = fontToName(newFont)
                 
-            defaults.setObject(name, forKey:mode.fontKey)
+            defaults.set(name, forKey:mode.fontKey)
         }
     }
 
-    func windowWillClose(notification: NSNotification) {
-        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+    func windowWillClose(_ notification: Notification) {
+        let appDelegate = NSApplication.shared().delegate as! AppDelegate
         
         appDelegate.preferencesWillClose()
     }

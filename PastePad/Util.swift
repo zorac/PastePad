@@ -20,6 +20,18 @@ enum TextMode:Int {
         return self == .Plain
     }
     
+    var fileExtension:String {
+        return isRich ? "rtf" : "txt"
+    }
+    
+    var fileType:String {
+        return isRich ? RichType : PlainType
+    }
+    
+    var documentType:String {
+        return isRich ? NSRTFTextDocumentType : NSPlainTextDocumentType
+    }
+    
     var fontKey:String {
         return isRich ? "PPRichFont" : "PPPlainFont"
     }
@@ -33,6 +45,8 @@ enum TextMode:Int {
     }
 }
 
+let RichType = kUTTypeRTF as String
+let PlainType = kUTTypePlainText as String
 let TextModeKey = "PPTextMode"
 let TextModeDefault = TextMode.Rich
 let InspectorKey = "PPInspector"

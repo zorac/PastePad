@@ -16,7 +16,7 @@
                 <menuItem title="New Window" id="7bG-xs-HJz" userLabel="New Window">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="newWindow:" target="-1" id="eIY-Cw-pSl"/>
+                        <action selector="newDocument:" target="-1" id="bWf-nz-q29"/>
                     </connections>
                 </menuItem>
             </items>

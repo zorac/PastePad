@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A2982F119729DEB00A1EFFC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A2982F019729DEB00A1EFFC /* MainMenu.xib */; };
-		0AA89E3C19727236004B0AA5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E3B19727236004B0AA5 /* main.swift */; };
 		0AA89E3E19727236004B0AA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E3D19727236004B0AA5 /* AppDelegate.swift */; };
 		0AA89E4019727236004B0AA5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AA89E3F19727236004B0AA5 /* Images.xcassets */; };
 		0AA89E4F19727236004B0AA5 /* PastePadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E4E19727236004B0AA5 /* PastePadTests.swift */; };
@@ -48,7 +47,6 @@
 		0A2982F019729DEB00A1EFFC /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		0AA89E3619727236004B0AA5 /* PastePad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PastePad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AA89E3A19727236004B0AA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0AA89E3B19727236004B0AA5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		0AA89E3D19727236004B0AA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AA89E3F19727236004B0AA5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0AA89E4819727236004B0AA5 /* PastePadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PastePadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,19 +109,10 @@
 				0AA89E65197274A9004B0AA5 /* Pad.xib */,
 				0AA89E63197274A9004B0AA5 /* Preferences.xib */,
 				0AA89E3F19727236004B0AA5 /* Images.xcassets */,
-				0AA89E3919727236004B0AA5 /* Supporting Files */,
-			);
-			path = PastePad;
-			sourceTree = "<group>";
-		};
-		0AA89E3919727236004B0AA5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				0AA89E3A19727236004B0AA5 /* Info.plist */,
-				0AA89E3B19727236004B0AA5 /* main.swift */,
 				0AA89E5E19727392004B0AA5 /* PastePad.entitlements */,
 			);
-			name = "Supporting Files";
+			path = PastePad;
 			sourceTree = "<group>";
 		};
 		0AA89E4B19727236004B0AA5 /* PastePadTests */ = {
@@ -201,6 +190,9 @@
 							com.apple.Sandbox = {
 								enabled = 1;
 							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
 						};
 					};
 					0AA89E4719727236004B0AA5 = {
@@ -259,7 +251,6 @@
 				0AA89E3E19727236004B0AA5 /* AppDelegate.swift in Sources */,
 				0AA89E72197278BB004B0AA5 /* Util.swift in Sources */,
 				0AA89E6C1972769A004B0AA5 /* PadController.swift in Sources */,
-				0AA89E3C19727236004B0AA5 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,12 +393,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PastePad/PastePad.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = PastePad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.rigbyjones.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -416,12 +410,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PastePad/PastePad.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PastePad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.rigbyjones.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

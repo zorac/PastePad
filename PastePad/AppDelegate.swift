@@ -8,6 +8,7 @@
 
 import Cocoa
 
+@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var windows = NSMutableSet()
     var preferences: PreferencesController?
@@ -20,19 +21,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             TextMode.Rich.fontKey: fontToName(TextMode.Rich.userFontOfSize(0.0)),
             TextMode.Plain.fontKey: fontToName(TextMode.Plain.userFontOfSize(0.0))
         ])
-        
-        self.newWindow(self)
     }
     
-    @IBAction func newWindow(_: AnyObject) {
-        let controller = PadController(window: nil)
-        
-        controller.showWindow(self)
-        controller.window!.makeKeyAndOrderFront(self)
-
-        windows.addObject(controller)
-    }
-    
+    // TODO is this needed?
     func windowWillClose(controller: PadController) {
         windows.removeObject(controller)
         

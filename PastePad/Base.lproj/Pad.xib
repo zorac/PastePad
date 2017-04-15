@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8173.3"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="PadController" customModule="PastePad">
+        <customObject id="-2" userLabel="File's Owner" customClass="PadController" customModule="PastePad" customModuleProvider="target">
             <connections>
                 <outlet property="textView" destination="qMC-wJ-iMt" id="Rop-Hx-dRQ"/>
                 <outlet property="window" destination="GvT-mx-BGA" id="Nu1-rZ-6Sf"/>

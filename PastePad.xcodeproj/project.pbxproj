@@ -7,26 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A2982F119729DEB00A1EFFC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A2982F019729DEB00A1EFFC /* MainMenu.xib */; };
+		0A74EF461F6435A700590E05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A74EF421F6435A700590E05 /* Main.storyboard */; };
+		0A74EF471F6435A700590E05 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74EF441F6435A700590E05 /* Document.swift */; };
+		0A74EF481F6435A700590E05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74EF451F6435A700590E05 /* ViewController.swift */; };
 		0AA89E3E19727236004B0AA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E3D19727236004B0AA5 /* AppDelegate.swift */; };
 		0AA89E4019727236004B0AA5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AA89E3F19727236004B0AA5 /* Images.xcassets */; };
-		0AA89E69197274A9004B0AA5 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA89E63197274A9004B0AA5 /* Preferences.xib */; };
-		0AA89E6A197274A9004B0AA5 /* Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA89E65197274A9004B0AA5 /* Pad.xib */; };
-		0AA89E6C1972769A004B0AA5 /* PadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E6B1972769A004B0AA5 /* PadController.swift */; };
 		0AA89E6F197276B4004B0AA5 /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E6D197276B4004B0AA5 /* PreferencesController.swift */; };
 		0AA89E72197278BB004B0AA5 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E71197278BB004B0AA5 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A2982F019729DEB00A1EFFC /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		0A74EF431F6435A700590E05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0A74EF441F6435A700590E05 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		0A74EF451F6435A700590E05 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0AA89E3619727236004B0AA5 /* PastePad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PastePad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AA89E3A19727236004B0AA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AA89E3D19727236004B0AA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AA89E3F19727236004B0AA5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0AA89E5E19727392004B0AA5 /* PastePad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PastePad.entitlements; sourceTree = "<group>"; };
-		0AA89E64197274A9004B0AA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Preferences.xib; sourceTree = "<group>"; };
-		0AA89E66197274A9004B0AA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Pad.xib; sourceTree = "<group>"; };
-		0AA89E6B1972769A004B0AA5 /* PadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadController.swift; sourceTree = "<group>"; };
 		0AA89E6D197276B4004B0AA5 /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
 		0AA89E71197278BB004B0AA5 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,12 +60,11 @@
 			isa = PBXGroup;
 			children = (
 				0AA89E3D19727236004B0AA5 /* AppDelegate.swift */,
-				0AA89E6B1972769A004B0AA5 /* PadController.swift */,
+				0A74EF441F6435A700590E05 /* Document.swift */,
+				0A74EF451F6435A700590E05 /* ViewController.swift */,
 				0AA89E6D197276B4004B0AA5 /* PreferencesController.swift */,
 				0AA89E71197278BB004B0AA5 /* Util.swift */,
-				0A2982F019729DEB00A1EFFC /* MainMenu.xib */,
-				0AA89E65197274A9004B0AA5 /* Pad.xib */,
-				0AA89E63197274A9004B0AA5 /* Preferences.xib */,
+				0A74EF421F6435A700590E05 /* Main.storyboard */,
 				0AA89E3F19727236004B0AA5 /* Images.xcassets */,
 				0AA89E3A19727236004B0AA5 /* Info.plist */,
 				0AA89E5E19727392004B0AA5 /* PastePad.entitlements */,
@@ -145,9 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AA89E4019727236004B0AA5 /* Images.xcassets in Resources */,
-				0A2982F119729DEB00A1EFFC /* MainMenu.xib in Resources */,
-				0AA89E6A197274A9004B0AA5 /* Pad.xib in Resources */,
-				0AA89E69197274A9004B0AA5 /* Preferences.xib in Resources */,
+				0A74EF461F6435A700590E05 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,30 +153,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A74EF481F6435A700590E05 /* ViewController.swift in Sources */,
 				0AA89E6F197276B4004B0AA5 /* PreferencesController.swift in Sources */,
 				0AA89E3E19727236004B0AA5 /* AppDelegate.swift in Sources */,
 				0AA89E72197278BB004B0AA5 /* Util.swift in Sources */,
-				0AA89E6C1972769A004B0AA5 /* PadController.swift in Sources */,
+				0A74EF471F6435A700590E05 /* Document.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0AA89E63197274A9004B0AA5 /* Preferences.xib */ = {
+		0A74EF421F6435A700590E05 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0AA89E64197274A9004B0AA5 /* Base */,
+				0A74EF431F6435A700590E05 /* Base */,
 			);
-			name = Preferences.xib;
-			sourceTree = "<group>";
-		};
-		0AA89E65197274A9004B0AA5 /* Pad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0AA89E66197274A9004B0AA5 /* Base */,
-			);
-			name = Pad.xib;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

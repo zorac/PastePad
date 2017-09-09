@@ -2,8 +2,7 @@
 //  Util.swift
 //  PastePad
 //
-//  Created by Mark Rigby-Jones on 13/07/2014.
-//  Copyright (c) 2014 Mark Rigby-Jones. All rights reserved.
+//  Copyright © 2017 Mark Rigby-Jones. All rights reserved.
 //
 
 import Cocoa
@@ -63,7 +62,7 @@ func nameToFont(_ name: String, textMode: TextMode) -> NSFont {
     let scanner = Scanner(string:name)
     var points:Double = 0.0
     var face:NSString?
-
+    
     scanner.scanDouble(&points)
     scanner.scanString("pt", into: nil);
     scanner.scanUpToCharacters(from: CharacterSet.newlines, into: &face)
@@ -71,7 +70,7 @@ func nameToFont(_ name: String, textMode: TextMode) -> NSFont {
     if points > MaxPoints {
         points = MaxPoints
     }
-        
+    
     if let font = NSFont(name: face! as String, size: CGFloat(points)) {
         return font
     } else {

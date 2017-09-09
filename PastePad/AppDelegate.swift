@@ -2,18 +2,19 @@
 //  AppDelegate.swift
 //  PastePad
 //
-//  Created by Mark Rigby-Jones on 13/07/2014.
-//  Copyright (c) 2014 Mark Rigby-Jones. All rights reserved.
+//  Copyright © 2017 Mark Rigby-Jones. All rights reserved.
 //
 
 import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    /*
     var windows = NSMutableSet()
     var preferences: PreferencesController?
+    */
 
-    func applicationDidFinishLaunching(_ notification: Notification) {
+    func applicationWillFinishLaunching(_ aNotification: Notification) {
         UserDefaults.standard.register(defaults: [
             TextModeKey: TextModeDefault.rawValue,
             InspectorKey: InspectorDefault,
@@ -23,6 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ])
     }
     
+    /*
     // TODO is this needed?
     func windowWillClose(_ controller: PadController) {
         windows.remove(controller)
@@ -31,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             preferences?.close()
         }
     }
-
+    
     @IBAction func showPreferences(_: AnyObject) {
         if (preferences == nil) {
             preferences = PreferencesController(window: nil)
@@ -45,9 +47,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.synchronize()
         preferences = nil
     }
+    */
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
+    
+    func applicationWillTerminate(_ aNotification: Notification) {
+        // Insert code here to tear down your application
+    }
 }
-

@@ -10,7 +10,6 @@
 		0A2982F119729DEB00A1EFFC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A2982F019729DEB00A1EFFC /* MainMenu.xib */; };
 		0AA89E3E19727236004B0AA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E3D19727236004B0AA5 /* AppDelegate.swift */; };
 		0AA89E4019727236004B0AA5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AA89E3F19727236004B0AA5 /* Images.xcassets */; };
-		0AA89E4F19727236004B0AA5 /* PastePadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E4E19727236004B0AA5 /* PastePadTests.swift */; };
 		0AA89E69197274A9004B0AA5 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA89E63197274A9004B0AA5 /* Preferences.xib */; };
 		0AA89E6A197274A9004B0AA5 /* Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA89E65197274A9004B0AA5 /* Pad.xib */; };
 		0AA89E6C1972769A004B0AA5 /* PadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E6B1972769A004B0AA5 /* PadController.swift */; };
@@ -18,39 +17,12 @@
 		0AA89E72197278BB004B0AA5 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA89E71197278BB004B0AA5 /* Util.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0AA89E4919727236004B0AA5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0AA89E2E19727236004B0AA5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0AA89E3519727236004B0AA5;
-			remoteInfo = PastePad;
-		};
-		0AB5E0051975A9990050BE01 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0AA89E2E19727236004B0AA5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0AA89E3519727236004B0AA5;
-			remoteInfo = PastePad;
-		};
-		0AB5E0071975A9990050BE01 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0AA89E2E19727236004B0AA5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0AA89E3519727236004B0AA5;
-			remoteInfo = PastePad;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0A2982F019729DEB00A1EFFC /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		0AA89E3619727236004B0AA5 /* PastePad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PastePad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AA89E3A19727236004B0AA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AA89E3D19727236004B0AA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AA89E3F19727236004B0AA5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0AA89E4819727236004B0AA5 /* PastePadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PastePadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0AA89E4D19727236004B0AA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0AA89E4E19727236004B0AA5 /* PastePadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastePadTests.swift; sourceTree = "<group>"; };
 		0AA89E5E19727392004B0AA5 /* PastePad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PastePad.entitlements; sourceTree = "<group>"; };
 		0AA89E64197274A9004B0AA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Preferences.xib; sourceTree = "<group>"; };
 		0AA89E66197274A9004B0AA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Pad.xib; sourceTree = "<group>"; };
@@ -67,13 +39,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0AA89E4519727236004B0AA5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +46,6 @@
 			isa = PBXGroup;
 			children = (
 				0AA89E3819727236004B0AA5 /* PastePad */,
-				0AA89E4B19727236004B0AA5 /* PastePadTests */,
 				0AA89E3719727236004B0AA5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				0AA89E3619727236004B0AA5 /* PastePad.app */,
-				0AA89E4819727236004B0AA5 /* PastePadTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,23 +75,6 @@
 			path = PastePad;
 			sourceTree = "<group>";
 		};
-		0AA89E4B19727236004B0AA5 /* PastePadTests */ = {
-			isa = PBXGroup;
-			children = (
-				0AA89E4E19727236004B0AA5 /* PastePadTests.swift */,
-				0AA89E4C19727236004B0AA5 /* Supporting Files */,
-			);
-			path = PastePadTests;
-			sourceTree = "<group>";
-		};
-		0AA89E4C19727236004B0AA5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0AA89E4D19727236004B0AA5 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -148,26 +94,6 @@
 			productName = PastePad;
 			productReference = 0AA89E3619727236004B0AA5 /* PastePad.app */;
 			productType = "com.apple.product-type.application";
-		};
-		0AA89E4719727236004B0AA5 /* PastePadTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0AA89E5519727236004B0AA5 /* Build configuration list for PBXNativeTarget "PastePadTests" */;
-			buildPhases = (
-				0AA89E4419727236004B0AA5 /* Sources */,
-				0AA89E4519727236004B0AA5 /* Frameworks */,
-				0AA89E4619727236004B0AA5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0AA89E4A19727236004B0AA5 /* PBXTargetDependency */,
-				0AB5E0061975A9990050BE01 /* PBXTargetDependency */,
-				0AB5E0081975A9990050BE01 /* PBXTargetDependency */,
-			);
-			name = PastePadTests;
-			productName = PastePadTests;
-			productReference = 0AA89E4819727236004B0AA5 /* PastePadTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -193,11 +119,6 @@
 							};
 						};
 					};
-					0AA89E4719727236004B0AA5 = {
-						CreatedOnToolsVersion = 6.0;
-						LastSwiftMigration = 0830;
-						TestTargetID = 0AA89E3519727236004B0AA5;
-					};
 				};
 			};
 			buildConfigurationList = 0AA89E3119727236004B0AA5 /* Build configuration list for PBXProject "PastePad" */;
@@ -214,7 +135,6 @@
 			projectRoot = "";
 			targets = (
 				0AA89E3519727236004B0AA5 /* PastePad */,
-				0AA89E4719727236004B0AA5 /* PastePadTests */,
 			);
 		};
 /* End PBXProject section */
@@ -228,13 +148,6 @@
 				0A2982F119729DEB00A1EFFC /* MainMenu.xib in Resources */,
 				0AA89E6A197274A9004B0AA5 /* Pad.xib in Resources */,
 				0AA89E69197274A9004B0AA5 /* Preferences.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0AA89E4619727236004B0AA5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,33 +165,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0AA89E4419727236004B0AA5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0AA89E4F19727236004B0AA5 /* PastePadTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0AA89E4A19727236004B0AA5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0AA89E3519727236004B0AA5 /* PastePad */;
-			targetProxy = 0AA89E4919727236004B0AA5 /* PBXContainerItemProxy */;
-		};
-		0AB5E0061975A9990050BE01 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0AA89E3519727236004B0AA5 /* PastePad */;
-			targetProxy = 0AB5E0051975A9990050BE01 /* PBXContainerItemProxy */;
-		};
-		0AB5E0081975A9990050BE01 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0AA89E3519727236004B0AA5 /* PastePad */;
-			targetProxy = 0AB5E0071975A9990050BE01 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0AA89E63197274A9004B0AA5 /* Preferences.xib */ = {
@@ -420,46 +307,6 @@
 			};
 			name = Release;
 		};
-		0AA89E5619727236004B0AA5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PastePad.app/Contents/MacOS/PastePad";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PastePadTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.rigbyjones.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Debug;
-		};
-		0AA89E5719727236004B0AA5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PastePad.app/Contents/MacOS/PastePad";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PastePadTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.rigbyjones.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -477,15 +324,6 @@
 			buildConfigurations = (
 				0AA89E5319727236004B0AA5 /* Debug */,
 				0AA89E5419727236004B0AA5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0AA89E5519727236004B0AA5 /* Build configuration list for PBXNativeTarget "PastePadTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0AA89E5619727236004B0AA5 /* Debug */,
-				0AA89E5719727236004B0AA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

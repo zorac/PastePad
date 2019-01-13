@@ -1,24 +1,12 @@
-//
-//  ViewController.swift
-//  PastePad
-//
-//  Copyright © 2017 Mark Rigby-Jones. All rights reserved.
-//
+import AppKit
 
-import Cocoa
-
-class ViewController: NSViewController {
+/**
+ * View controller class for PastePad.
+ *
+ * - Author: Mark Rigby-Jones
+ * - Copyright: © 2017-2019 Mark Rigby-Jones. All rights reserved.
+ */
+class ViewController : NSViewController {
+    /// The text view.
     @IBOutlet var textView: NSTextView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
 }

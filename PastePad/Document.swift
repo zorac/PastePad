@@ -1,32 +1,30 @@
-//
-//  Document.swift
-//  PastePad
-//
-//  Copyright © 2017 Mark Rigby-Jones. All rights reserved.
-//
+import AppKit
 
-import Cocoa
-
-class Document: NSDocument {
+/**
+ * Document class for PastePad.
+ *
+ * - Author: Mark Rigby-Jones
+ * - Copyright: © 2014-2019 Mark Rigby-Jones. All rights reserved.
+ */
+class Document : NSDocument, NSFontChanging {
+    /// The standard user defaults.
     let defaults = UserDefaults.standard
-    
+    /// Text being loaded from a file.
     var loading: NSAttributedString?
-    var textMode = TextModeDefault
-    var inspector = InspectorDefault
-    var ruler = RulerDefault
+    /// The current text mode.
+    var textMode = TextMode.rich
+    /// Whether the inspector is currently diplayed.
+    var inspector = true
+    /// Whether the ruler is currently displayed.
+    var ruler = false
+    /// The text view displaying this document.
     var textView: NSTextView!
     
-    override init() {
-        super.init()
-        // Add your subclass-specific initialization here.
-    }
-
-    override class func autosavesInPlace() -> Bool {
+    override class var autosavesInPlace: Bool {
         return true
     }
 
     override func makeWindowControllers() {
-        // Returns the Storyboard that contains your Document window.
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         let windowController = storyboard.instantiateController(withIdentifier: "Document Window Controller") as! NSWindowController
         self.addWindowController(windowController)
@@ -35,8 +33,8 @@ class Document: NSDocument {
         
         textView = viewController.textView;
         textView.enabledTextCheckingTypes = 0
-        inspector = defaults.bool(forKey: InspectorKey)
-        ruler = defaults.bool(forKey: RulerKey)
+        inspector = DefaultsKey.inspector.boolValue()
+        ruler = DefaultsKey.ruler.boolValue()
         
         if let attributed = loading {
             if textMode == .rich {
@@ -50,27 +48,28 @@ class Document: NSDocument {
             }
             
             loading = nil
-        } else if let mode = TextMode(rawValue:defaults.integer(forKey: TextModeKey)) {
+        } else if let mode = TextMode(rawValue: DefaultsKey.textMode.intValue()) {
             setTextMode(mode);
         } else {
-            setTextMode(TextModeDefault)
+            setTextMode(.rich)
         }
         
-        defaults.addObserver(self, forKeyPath: TextMode.plain.fontKey, options: .new, context: nil)
+        defaults.addObserver(self, forKeyPath: TextMode.plain.fontKey.rawValue, options: .new, context: nil)
     }
     
     override func canClose(withDelegate delegate: Any, shouldClose shouldCloseSelector: Selector?, contextInfo: UnsafeMutableRawPointer?) {
         if fileURL == nil {
-            updateChangeCount(NSDocumentChangeType.changeCleared)
+            updateChangeCount(.changeCleared)
         }
         
         super.canClose(withDelegate: delegate, shouldClose: shouldCloseSelector, contextInfo: contextInfo)
     }
     
-    override func writableTypes(for saveOperation: NSSaveOperationType) -> [String] {
+    override func writableTypes(for saveOperation: NSDocument.SaveOperationType) -> [String] {
         return [ textMode.fileType ]
     }
     
+    /// Action to toggle between plain and rcih text modes.
     @IBAction func togglePlainText(_: AnyObject) {
         if (textMode.isRich) {
             inspector = textView.usesInspectorBar
@@ -80,6 +79,7 @@ class Document: NSDocument {
         setTextMode(textMode.other)
     }
     
+    /// Action to toggle the inspector.
     @IBAction func toggleInspector(_: AnyObject) {
         inspector = !inspector
         
@@ -88,14 +88,19 @@ class Document: NSDocument {
         }
     }
     
+    /**
+     * Set the text mode of this document.
+     *
+     * - Parameter: The new text mode.
+     */
     func setTextMode(_ newTextMode: TextMode) {
         textMode = newTextMode
         
         let text = textView.textStorage!.string
         let rich = textMode.isRich
         let fontKey = textMode.fontKey
-        let font = nameToFont(defaults.string(forKey: fontKey)!, textMode: rich ? .rich : .plain)
-        let attributes = [ NSFontAttributeName: font ]
+        let font = NSFont.fromName(fontKey.stringValue(), textMode: rich ? .rich : .plain)
+        let attributes: [NSAttributedString.Key : Any] = [ .font: font ]
         let attributed = NSAttributedString(string: text, attributes: attributes)
         
         textView.isRichText = rich
@@ -106,7 +111,7 @@ class Document: NSDocument {
         textView.isRulerVisible = rich ? ruler : false
         
         if let url = fileURL {
-            save(to: url, ofType: textMode.fileType, for: NSSaveOperationType.autosaveInPlaceOperation, completionHandler: { error in
+            save(to: url, ofType: textMode.fileType, for: .autosaveInPlaceOperation, completionHandler: { error in
                 if (error != nil) {
                     self.fileURL = nil
                 }
@@ -122,24 +127,14 @@ class Document: NSDocument {
         }
     }
     
-    // TODO is this correct now?
-    override func validModesForFontPanel(_ fontPanel: NSFontPanel) -> Int {
-        return Int(NSFontPanelAllModesMask)
+    func validModesForFontPanel(_ fontPanel: NSFontPanel) -> NSFontPanel.ModeMask {
+        return .allModes
     }
-    
-    // TODO is this correct now?
-    /*
-    func windowWillClose(_ notification: Notification) {
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        
-        appDelegate.windowWillClose(self)
-    }
-    */
     
     override func data(ofType typeName: String) throws -> Data {
         if typeName == textMode.fileType {
             if let storage = textView.textStorage {
-                return try storage.data(from: NSMakeRange(0, storage.length), documentAttributes: [NSDocumentTypeDocumentAttribute: textMode.documentType])
+                return try storage.data(from: NSMakeRange(0, storage.length), documentAttributes: [.documentType: textMode.documentType])
             }
         }
         
@@ -148,14 +143,14 @@ class Document: NSDocument {
     
     override func read(from data: Data, ofType typeName: String) throws {
         switch typeName {
-        case PlainType:
+        case TextMode.plain.fileType:
             textMode = .plain
-        case RichType:
+        case TextMode.rich.fileType:
             textMode = .rich
         default:
             throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
         }
         
-        try loading = NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: textMode.documentType], documentAttributes: nil)
+        try loading = NSAttributedString(data: data, options: [.documentType: textMode.documentType], documentAttributes: nil)
     }
 }

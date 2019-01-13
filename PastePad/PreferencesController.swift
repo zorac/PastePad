@@ -1,47 +1,40 @@
-//
-//  PreferencesController.swift
-//  PastePad
-//
-//  Copyright © 2017 Mark Rigby-Jones. All rights reserved.
-//
+import AppKit
 
-import Cocoa
-
-class PreferencesController: NSWindowController, NSWindowDelegate {
-    let defaults = UserDefaults.standard
-    let fontManager = NSFontManager.shared()
+/**
+ * Preferences view controller.
+ *
+ * - Author: Mark Rigby-Jones
+ * - Copyright: © 2014-2019 Mark Rigby-Jones. All rights reserved.
+ */
+class PreferencesController : NSWindowController, NSFontChanging {
+    /// The shared font manager.
+    let fontManager = NSFontManager.shared
+    /// The text mode of the most recently clicked font select button.
+    var textMode: TextMode?
     
-    var textMode: TextMode?;
-    
+    /// Action to display the font pane for a font-select button.
     @IBAction func displayFontPanel(_ sender: NSView) {
         textMode = TextMode(rawValue: sender.tag)
         
         if let mode = textMode {
-            let font = nameToFont(defaults.string(forKey: mode.fontKey)!, textMode: mode)
+            let font = NSFont.fromName(mode.fontKey.stringValue(), textMode: mode)
             
             fontManager.setSelectedFont(font, isMultiple: false)
             fontManager.orderFrontFontPanel(self)
         }
     }
     
-    override func validModesForFontPanel(_ fontPanel: NSFontPanel) -> Int {
-        return Int(NSFontPanelFaceModeMask | NSFontPanelSizeModeMask | NSFontPanelCollectionModeMask)
+    func validModesForFontPanel(_ fontPanel: NSFontPanel) -> NSFontPanel.ModeMask {
+        return [ .face, .size, .collection ]
     }
     
-    override func changeFont(_ sender: Any!) {
+    func changeFont(_ sender: NSFontManager?) {
         if let mode = textMode {
-            let oldFont = nameToFont(defaults.string(forKey: mode.fontKey)!, textMode: mode)
+            let oldFont = NSFont.fromName(mode.fontKey.stringValue(), textMode: mode)
             let newFont = fontManager.convert(oldFont)
-            let name = fontToName(newFont)
+            let name = newFont.name
             
-            defaults.set(name, forKey:mode.fontKey)
+            mode.fontKey.set(value: name)
         }
     }
-    /*
-    func windowWillClose(_ notification: Notification) {
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        
-        appDelegate.preferencesWillClose()
-    }
-    */
 }

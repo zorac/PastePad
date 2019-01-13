@@ -1,59 +1,24 @@
-//
-//  AppDelegate.swift
-//  PastePad
-//
-//  Copyright © 2017 Mark Rigby-Jones. All rights reserved.
-//
+import AppKit
 
-import Cocoa
-
+/**
+ * Application delegate class for PastePad.
+ *
+ * - Author: Mark Rigby-Jones
+ * - Copyright: © 2014-2019 Mark Rigby-Jones. All rights reserved.
+ */
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
-    /*
-    var windows = NSMutableSet()
-    var preferences: PreferencesController?
-    */
-
+class AppDelegate : NSObject, NSApplicationDelegate {
     func applicationWillFinishLaunching(_ aNotification: Notification) {
         UserDefaults.standard.register(defaults: [
-            TextModeKey: TextModeDefault.rawValue,
-            InspectorKey: InspectorDefault,
-            RulerKey: RulerDefault,
-            TextMode.rich.fontKey: fontToName(TextMode.rich.userFontOfSize(0.0)),
-            TextMode.plain.fontKey: fontToName(TextMode.plain.userFontOfSize(0.0))
+            DefaultsKey.textMode.rawValue: TextMode.rich.rawValue,
+            DefaultsKey.inspector.rawValue: true,
+            DefaultsKey.ruler.rawValue: false,
+            TextMode.rich.fontKey.rawValue: TextMode.rich.userFontOfSize(0.0).name,
+            TextMode.plain.fontKey.rawValue: TextMode.plain.userFontOfSize(0.0).name
         ])
     }
     
-    /*
-    // TODO is this needed?
-    func windowWillClose(_ controller: PadController) {
-        windows.remove(controller)
-        
-        if (windows.count == 0) {
-            preferences?.close()
-        }
-    }
-    
-    @IBAction func showPreferences(_: AnyObject) {
-        if (preferences == nil) {
-            preferences = PreferencesController(window: nil)
-            preferences!.showWindow(self)
-        }
-        
-        preferences!.window!.makeKeyAndOrderFront(self)
-    }
-    
-    func preferencesWillClose() {
-        UserDefaults.standard.synchronize()
-        preferences = nil
-    }
-    */
-    
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
-    }
-    
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
     }
 }
